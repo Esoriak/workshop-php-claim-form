@@ -3,11 +3,38 @@ $errors = [];
 
 // TODO 3 - Get the data from the form and check for errors
 
-// $formData = $_POST[];
+
+
+ $formData = array_map('trim', $_POST);
+
+ var_dump($formData);
+
+ $errors = []; 
+ if (empty($formData['firstname'])){
+    $errors[] = 'Your firstname is required please.';
+ }
+ if (empty($formData['email'])){
+    $errors[] = 'Your email is required please.';
+ }
+ if (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)){
+    $errors[] = 'Your email is not a good format';
+ }
+ if (empty($formData['companyName'])){
+    $errors[] = 'Your company Name is required please.';
+ }
+ if (strlen($formData['contactMessage']) < 30) {
+    $errors[] = 'Your reclamation is not too long';
+ }
+ if (empty($formData['sales'])){
+    $errors[] = 'Your sales is required please.';
+ }
 // var_dump($formData);
 if (!empty($errors)) {
     require 'error.php';
     die();
+}
+else {
+    header('Location : ./form.html');
 }
 ?>
 
@@ -40,12 +67,15 @@ if (!empty($errors)) {
 
             <!-- TODO 2 - Replace those placeholders by the values sent from the form -->
             <ul>
-            <!-- <?= var_dump($_POST) ?> -->
-                 <li>Votre entreprise : <span><?= htmlentities($_POST["companyName"]) ?></span></li>
-                 <li>Votre nom : <span><?= htmlentities($_POST["firstname"]) ?></span></li>
-                <li>Votre email : <span><?= htmlentities($_POST["email"]) ?></span></li>
+                 <li>Votre entreprise : <span><?= htmlentities($formData["companyName"]) ?></span></li>
+                 <li>Votre nom : <span><?= htmlentities($formData["firstname"]) ?></span></li>
+                <li>Votre email : <span><?= htmlentities($formData["email"]) ?></span></li>
                 <li>Votre message :
-                    <p><?= htmlentities($_POST["contactMessage"]) ?>
+                    <p><?= htmlentities($formData["contactMessage"]) ?>
+                    </p>
+                </li>
+                <li>Votre vendeur :
+                    <p><?= htmlentities($formData["sales"]) ?>
                     </p>
                 </li>
             </ul>
