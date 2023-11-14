@@ -3,7 +3,8 @@ $errors = [];
 
 // TODO 3 - Get the data from the form and check for errors
 
-
+// $formData = $_POST[];
+// var_dump($formData);
 if (!empty($errors)) {
     require 'error.php';
     die();
@@ -39,16 +40,16 @@ if (!empty($errors)) {
 
             <!-- TODO 2 - Replace those placeholders by the values sent from the form -->
             <ul>
-                <li>Votre entreprise : <span><?= $companyName ?></span></li>
-                <li>Votre nom : <span><?= $firstname ?></span></li>
-                <li>Votre email : <span><?= $email ?></span></li>
+            <!-- <?= var_dump($_POST) ?> -->
+                 <li>Votre entreprise : <span><?= htmlentities($_POST["companyName"]) ?></span></li>
+                 <li>Votre nom : <span><?= htmlentities($_POST["firstname"]) ?></span></li>
+                <li>Votre email : <span><?= htmlentities($_POST["email"]) ?></span></li>
                 <li>Votre message :
-                    <p><?= $contactMessage ?>
+                    <p><?= htmlentities($_POST["contactMessage"]) ?>
                     </p>
                 </li>
             </ul>
         </div>
     </main>
 </body>
-
 </html>
