@@ -21,7 +21,7 @@
         <p>Pour toute plainte concernant votre commande de papier, veuillez s'il vous plait remplir le formulaire
             suivant.</p>
 
-        <form action="" method="post">
+        <form action="./result.php" method="post">
             <div>
                 <label for="companyName">Nom de votre entreprise : </label>
                 <input type="text" id="companyName" name="companyName" required="true">
@@ -29,6 +29,14 @@
 
             <!--TODO 1 - Add the missing fields-->
 
+            <div>
+                <label for="firstname">Prénom : </label>
+                <input name="firstname" id="firstname" required placeholder="ton plus joli prénom">
+            </div>
+            <div>
+                <label for="email">Email : </label>
+                <input name="email" id="email" required placeholder="ton meilleur email">
+            </div>
             <div>
                 <label for="contactMessage">Votre message : </label>
                 <textarea name="contactMessage" id="contactMessage" rows="10"></textarea>
